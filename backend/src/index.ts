@@ -5,7 +5,8 @@ import fs from "fs";
 import selfsigned from "selfsigned";
 
 const app = express();
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 3000; //4000;
+const ToxicAPI = "https://localhost:" + port; // Adjust as needed
 
 // Allow requests from your frontend
 app.use(
@@ -29,7 +30,7 @@ try {
   console.warn(
     "SSL cert files not found, generating self-signed certificate for development."
   );
-  const pems = selfsigned.generate(null, { days: 365 });
+  const pems = selfsigned.generate(undefined, { days: 365 });
   sslOptions = {
     key: pems.private,
     cert: pems.cert,
